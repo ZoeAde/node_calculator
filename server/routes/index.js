@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-var input;
-var operator = "/" + input + '/:num/:num2'
-router.get(operator, function(req, res, next) {
-  switch (operator) {
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+router.get("/:input/:num/:num2",
+  function(req, res, next) {
+  switch (req.params.input) {
     case 'add' :
       var add = parseInt(req.params.num) + parseInt(req.params.num2)
       res.send(add.toString());
@@ -27,14 +27,24 @@ router.get(operator, function(req, res, next) {
 });
 
 
-// router.get('/mult/:num/:num2', function(req, res, next) {
-//   var add = parseInt(req.params.num) * parseInt(req.params.num2)
+// router.get('/add/:num/:num2', function(req, res, next) {
+//   var add = parseInt(req.params.num) + parseInt(req.params.num2)
 //   res.send(add.toString())
 // });
 
+// router.get('/sub/:num/:num2', function(req, res, next) {
+//   var sub = parseInt(req.params.num) - parseInt(req.params.num2)
+//   res.send(sub.toString())
+// });
+
+// router.get('/mult/:num/:num2', function(req, res, next) {
+//   var mult = parseInt(req.params.num) * parseInt(req.params.num2)
+//   res.send(mult.toString())
+// });
+
 // router.get('/div/:num/:num2', function(req, res, next) {
-//   var add = parseInt(req.params.num) / parseInt(req.params.num2)
-//   res.send(add.toString())
+//   var div = parseInt(req.params.num) / parseInt(req.params.num2)
+//   res.send(div.toString())
 // });
 
 
